@@ -27,11 +27,11 @@
 <p>y: <span id="accG-y"></span></p>
 <p>z: <span id="accG-z"></span></p>
 
-<h2>角速度[deg/s]</h2>
+<!--<h2>角速度[deg/s]</h2>
 <p>a: <span id="rot-a"></span></p>
 <p>b: <span id="rot-b"></span></p>
 <p>g: <span id="rot-g"></span></p>
-    
+    -->
     <div id="txt1">ここにデータを表示</div><!-- <div id="txt1">ここにデータを表示</div>  -->
 
 
@@ -52,9 +52,9 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
-  document.getElementById("rot-a").innerHTML = rot.alpha.toFixed(3);
-  document.getElementById("rot-b").innerHTML = rot.beta.toFixed(3);
-  document.getElementById("rot-g").innerHTML = rot.gamma.toFixed(3);
+  //document.getElementById("rot-a").innerHTML = rot.alpha.toFixed(3);
+  //document.getElementById("rot-b").innerHTML = rot.beta.toFixed(3);
+  //document.getElementById("rot-g").innerHTML = rot.gamma.toFixed(3);
 });
 </script>
 
