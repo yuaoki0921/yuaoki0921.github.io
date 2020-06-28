@@ -50,7 +50,7 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
   
 });
-    if (accG-x >= 9 || accG-y >= 9 || accG-x <=-9 || accG-y <=-9) {
+    if (x >= 9 || y >= 9 || x <=-9 || y <=-9) {
                 alert("鍵が掛かっています。");
                 e.stopPropagation(); //一回のみ
             }
@@ -83,7 +83,7 @@ window.addEventListener("devicemotion", function(e){
 </body>
 
 <body>
-    <h2>いずれかの数字が90になるまで傾けてください</h2>
+    <h2>いずれかの数字が9になるまで傾けてください</h2>
 
     <!--    <p>下記の位置情報を取得することができました。</p>-->
 
