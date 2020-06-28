@@ -13,17 +13,17 @@
 <body>
     
     <h2>向き[deg]</h2>
-<p>a: <span id="ori-a"></span></p>
-<p>b: <span id="ori-b"></span></p>
-<p>g: <span id="ori-g"></span></p>
+<p>a: <span id="a"></span></p>
+<p>b: <span id="b"></span></p>
+<p>g: <span id="g"></span></p>
 
 <h2>加速度(重力加速度のぞく)[m/s^2]</h2>
-<p>x: <span id="acc-x"></span></p>
-<p>y: <span id="acc-y"></span></p>
-<p>z: <span id="acc-z"></span></p>
+<p>x: <span id="x1"></span></p>
+<p>y: <span id="y1"></span></p>
+<p>z: <span id="z1"></span></p>
 
 <h2>加速度(重力加速度ふくむ)[m/s^2]</h2>
-<p>x: <span id="accG-x"></span></p>
+<p>x: <span id="x2"></span></p>
 <p>y: <span id="accG-y"></span></p>
 <p>z: <span id="accG-z"></span></p>
 
@@ -33,24 +33,24 @@
 
 <script>
 window.addEventListener("deviceorientation", function(e){
-　document.getElementById("ori-a").innerHTML = e.alpha.toFixed(3);
-　document.getElementById("ori-b").innerHTML = e.beta.toFixed(3);
-　document.getElementById("ori-g").innerHTML = e.gamma.toFixed(3);
+　document.getElementById("a").innerHTML = e.alpha.toFixed(3);
+　document.getElementById("b").innerHTML = e.beta.toFixed(3);
+　document.getElementById("g").innerHTML = e.gamma.toFixed(3);
 });
 
 window.addEventListener("devicemotion", function(e){
   var acc = e.acceleration;
   var accG = e.accelerationIncludingGravity;
   var rot = e.rotationRate;
-  document.getElementById("acc-x").innerHTML = acc.x.toFixed(3);
-  document.getElementById("acc-y").innerHTML = acc.y.toFixed(3);
-  document.getElementById("acc-z").innerHTML = acc.z.toFixed(3);
-  document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
-  document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
-  document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
+  document.getElementById("x1").innerHTML = acc.x.toFixed(3);
+  document.getElementById("y1").innerHTML = acc.y.toFixed(3);
+  document.getElementById("z1").innerHTML = acc.z.toFixed(3);
+  document.getElementById("x2").innerHTML = accG.x.toFixed(3);
+  document.getElementById("y2").innerHTML = accG.y.toFixed(3);
+  document.getElementById("z2").innerHTML = accG.z.toFixed(3);
   
 });
-    if ("accG-x" >= 9 || "accG-y" >= 9 || "accG-x" <=-9 || "accG-y" <=-9) {
+    if ( x2 >= 9 || y2 >= 9 || x2 <=-9 || y2 <=-9) {
                 alert("鍵が掛かっています。");
                 e.stopPropagation(); //一回のみ
             }
