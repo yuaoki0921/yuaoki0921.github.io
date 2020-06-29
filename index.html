@@ -24,9 +24,9 @@
 <p>z: <span id="acc-z"></span></p>
 
 <h2>加速度(重力加速度ふくむ)[m/s^2]</h2>
-<p>x: <span id="x"></span></p>
-<p>y: <span id="y"></span></p>
-<p>z: <span id="z"></span></p>
+<p>x: <span id="accG-x"></span></p>
+<p>y: <span id="accG-y"></span></p>
+<p>z: <span id="accG-z"></span></p>
 
     
     <div id="txt1">ここにデータを表示</div><!-- <div id="txt1">ここにデータを表示</div>  -->
@@ -46,14 +46,14 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("acc-x").innerHTML = acc.x.toFixed(3);
   document.getElementById("acc-y").innerHTML = acc.y.toFixed(3);
   document.getElementById("acc-z").innerHTML = acc.z.toFixed(3);
-  document.getElementById("x").innerHTML = accG.x.toFixed(3);
-  document.getElementById("y").innerHTML = accG.y.toFixed(3);
-  document.getElementById("z").innerHTML = accG.z.toFixed(3);
+  document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
+  document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
+  document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
   
     
-     if ( x > 9 || y > 9 || x < -9 || y < -9) {
+     if ( accG-x > 9 || accG-y > 9 || accG-x < -9 || accG-y < -9) {
                 alert("鍵が掛かっています。");
-                e.stopPropagation(); //一回のみ
+                //e.stopPropagation(); //一回のみ
             }
     
 });
@@ -67,7 +67,7 @@ window.addEventListener("devicemotion", function(e){
             var lng  = position.coords.longitude;           // 経度を取得
             var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
             displayData(lat, lng, accu);                    // displayData 関数を実行
-            //alert("移動しました。");
+            alert("移動しました。");
         }, (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
             enableHighAccuracy: true                        // 高精度で測定するオプション
