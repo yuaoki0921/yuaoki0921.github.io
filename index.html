@@ -65,7 +65,7 @@ window.addEventListener("devicemotion", function(e){
             var lng  = position.coords.longitude;           // 経度を取得
             var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
             displayData(lat, lng, accu);                    // displayData 関数を実行
-            alert("移動しました。");
+            //alert("移動しました。");
         }, (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
             enableHighAccuracy: true                        // 高精度で測定するオプション
