@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+<!--     <meta name="viewport" content="width=device-width,initial-scale=1"> -->
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, 
+  maximum-scale=1.0, user-scalable=no" />
+  <script type="text/javascript">
     
 
     <script type="text/javascript" src="watch-position.js"></script><!-- jsファイル読み込み-->
@@ -14,43 +17,17 @@
 <body>
   
 
-<h2>向き[deg]</h2>
-<p>a: <span id="ori-a"></span></p>
-<p>b: <span id="ori-b"></span></p>
-<p>g: <span id="ori-g"></span></p>
+ window.addEventListener( "devicemotion", function( event ){
+      var x = event.accelerationIncludingGravity.x;
+      var y = event.accelerationIncludingGravity.y;
+      var z = event.accelerationIncludingGravity.z;
 
-<h2>加速度(重力加速度のぞく)[m/s^2]</h2>
-<p>x: <span id="acc-x"></span></p>
-<p>y: <span id="acc-y"></span></p>
-<p>z: <span id="acc-z"></span></p>
-
-<h2>加速度(重力加速度ふくむ)[m/s^2]</h2>
-<p>x: <span id="accG-x"></span></p>
-<p>y: <span id="accG-y"></span></p>
-<p>z: <span id="accG-z"></span></p>
-
-    
-    <div id="txt1">ここにデータを表示</div><!-- <div id="txt1">ここにデータを表示</div>  -->
-
-    
-<script>
-window.addEventListener("deviceorientation", function(e){
-　document.getElementById("ori-a").innerHTML = e.alpha.toFixed(3);
-　document.getElementById("ori-b").innerHTML = e.beta.toFixed(3);
-　document.getElementById("ori-g").innerHTML = e.gamma.toFixed(3);
-});
-
-window.addEventListener("devicemotion", function(e){
-  var acc = e.acceleration;
-  var accG = e.accelerationIncludingGravity;
-  var rot = e.rotationRate;
-  document.getElementById("acc-x").innerHTML = acc.x.toFixed(3);
-  document.getElementById("acc-y").innerHTML = acc.y.toFixed(3);
-  document.getElementById("acc-z").innerHTML = acc.z.toFixed(3);
-  document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
-  document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
-  document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
-  
+      var result1 = document.getElementById( "result_acc" );
+      result1.innerHTML = "重力加速度<br />" +
+        "X：" + x.toFixed(2) +"(m/s^2)<br />" +
+        "Y：" + y.toFixed(2) +"(m/s^2)<br />" + 
+        "Z：" + z.toFixed(2) +"(m/s^2)<br />";
+    });
                  if ( accG-x > 9 || accG-y > 9 || accG-x < -9 || accG-y < -9) {
                 alert("鍵が掛かっています。");
                 //e.stopPropagation(); //一回のみ
