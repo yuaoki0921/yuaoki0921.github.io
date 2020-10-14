@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="ja">
-
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1,user-scalable=no">
-    <title>jQueryの練習</title>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
-    <script>
-        $(function(){
-            window.addEventListener("devicemotion",function(evt){
-                var x = evt.accelerationIncludingGravity.x; //横方向の傾斜
-                var y = evt.accelerationIncludingGravity.y; //縦方法の傾斜
-                var z = evt.accelerationIncludingGravity.z; //上下方向の傾斜
-                $("#result").html("x:"+x+"<br>y:"+y+"<br>z:"+z);
-            },false);
-        });
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>加速度の値を得る</title>
 </head>
+
 <body>
-    <div data-role="page" id="maincontents">
-        <div data-role="header">
-            <h1>ジャイロセンサー</h1>
-        </div>
-        <div data-role="content">
-            <p>本体を傾けて下さい</p>
-            <output id="result">…</output>
-        </div>
-    </div>
+<div id="txt">ここにデータを表示</div>             <!-- データを表示するdiv要素 -->
+
+<script>
+var aX = 0, aY = 0, aZ = 0;                     // 加速度の値を入れる変数を3個用意
+
+// 加速度センサの値が変化したら実行される devicemotion イベント
+window.addEventListener("devicemotion", (dat) => {
+    aX = dat.acceleration.x;    // x軸の重力加速度（Android と iOSでは正負が逆）
+    aY = dat.acceleration.y;    // y軸の重力加速度（Android と iOSでは正負が逆）
+    aZ = dat.acceleration.z;    // z軸の重力加速度（Android と iOSでは正負が逆）
+});
+
+// 指定時間ごとに繰り返し実行される setInterval(実行する内容, 間隔[ms]) タイマーを設定
+var timer = window.setInterval(() => {
+    displayData();      // displayData 関数を実行
+}, 33); // 33msごとに（1秒間に約30回）
+
+// データを表示する displayData 関数
+function displayData() {
+    var txt = document.getElementById("txt");   // データを表示するdiv要素の取得
+    txt.innerHTML = "x: " + aX + "<br>"         // x軸の値
+                  + "y: " + aY + "<br>"         // y軸の値
+                  + "z: " + aZ;                 // z軸の値
+}
+</script>
+
 </body>
 
     
