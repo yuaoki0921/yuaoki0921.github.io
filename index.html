@@ -1,42 +1,109 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>加速度の値を得る</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    
+
+    <script type="text/javascript" src="watch-position.js"></script><!-- jsファイル読み込み-->
+    <title>加速度の値を得る</title>
 </head>
 
 <body>
-    
-        
+  
+
+<h2>向き[deg]</h2>
+<p>a: <span id="ori-a"></span></p>
+<p>b: <span id="ori-b"></span></p>
+<p>g: <span id="ori-g"></span></p>
+
+<h2>加速度(重力加速度のぞく)[m/s^2]</h2>
+<p>x: <span id="acc-x"></span></p>
+<p>y: <span id="acc-y"></span></p>
+<p>z: <span id="acc-z"></span></p>
+
+<h2>加速度(重力加速度ふくむ)[m/s^2]</h2>
+<p>x: <span id="accG-x"></span></p>
+<p>y: <span id="accG-y"></span></p>
+<p>z: <span id="accG-z"></span></p>
 
     
-<div id="txt">ここにデータを表示</div>             <!-- データを表示するdiv要素 -->
+    <div id="txt1">ここにデータを表示</div><!-- <div id="txt1">ここにデータを表示</div>  -->
 
+    
 <script>
-var aX = 0, aY = 0, aZ = 0;                     // 加速度の値を入れる変数を3個用意
-
-// 加速度センサの値が変化したら実行される devicemotion イベント
-window.addEventListener("devicemotion", (dat) => {
-    aX = dat.acceleration.x;    // x軸の重力加速度（Android と iOSでは正負が逆）
-    aY = dat.acceleration.y;    // y軸の重力加速度（Android と iOSでは正負が逆）
-    aZ = dat.acceleration.z;    // z軸の重力加速度（Android と iOSでは正負が逆）
+window.addEventListener("deviceorientation", function(e){
+　document.getElementById("ori-a").innerHTML = e.alpha.toFixed(3);
+　document.getElementById("ori-b").innerHTML = e.beta.toFixed(3);
+　document.getElementById("ori-g").innerHTML = e.gamma.toFixed(3);
 });
 
-// 指定時間ごとに繰り返し実行される setInterval(実行する内容, 間隔[ms]) タイマーを設定
-var timer = window.setInterval(() => {
-    displayData();      // displayData 関数を実行
-}, 33); // 33msごとに（1秒間に約30回）
-
-// データを表示する displayData 関数
-function displayData() {
-    var txt = document.getElementById("txt");   // データを表示するdiv要素の取得
-    txt.innerHTML = "x: " + aX + "<br>"         // x軸の値
-                  + "y: " + aY + "<br>"         // y軸の値
-                  + "z: " + aZ;                 // z軸の値
-}
+window.addEventListener("devicemotion", function(e){
+  var acc = e.acceleration;
+  var accG = e.accelerationIncludingGravity;
+  var rot = e.rotationRate;
+  document.getElementById("acc-x").innerHTML = acc.x.toFixed(3);
+  document.getElementById("acc-y").innerHTML = acc.y.toFixed(3);
+  document.getElementById("acc-z").innerHTML = acc.z.toFixed(3);
+  document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
+  document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
+  document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
+  
+                 if ( accG-x > 9 || accG-y > 9 || accG-x < -9 || accG-y < -9) {
+                alert("鍵が掛かっています。");
+                //e.stopPropagation(); //一回のみ
+            }   
+});
+   
 </script>
+    
+ <script>
+       // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
+        navigator.geolocation.watchPosition( (position) => {
+            var lat  = position.coords.latitude;            // 緯度を取得
+            var lng  = position.coords.longitude;           // 経度を取得
+            var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
+            displayData(lat, lng, accu);                    // displayData 関数を実行
+            alert("移動しました。");
+        }, (error) => {                                     // エラー処理（今回は特に何もしない）
+        }, {
+            enableHighAccuracy: true                        // 高精度で測定するオプション
+        });
+        
+        // データを表示する displayData 関数
+        function displayData(lat, lng, accu) {
+            var txt = document.getElementById("txt1");       // データを表示するdiv要素の取得
+            txt.innerHTML = "緯度: " + lat  +"<br>"+"経度: "+ lng + "<br>"  // データ表示
+                        + "精度: "       + accu;
+        }
+    </script>
+
+
+
 
 </body>
-    
+
+<body>
+    <h2>いずれかの数字が9になるまで傾けてください</h2>
+
+    <!--    <p>下記の位置情報を取得することができました。</p>-->
+
+    <dl id/="result"> </dl> <div class="map-wrapper">
+        <div id="map-canvas"></div>
+        </div>
+
+
+        <HR /style="margin: 3em 0 ;">
+
+        <!--     JavaScriptの読み込み -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7Pxqp7Asgi6D4eOtkCxnir5xPiIwY3EE"></script>
+        <script src="watch-position.js"></script>
+</body>
+
 </html>
+
+<!--
+XAMPP で Apache を Start させてください<br>
+LANを「パソコンとスマホ」同じものを使う。＼_(・ω・`)ココ重要！-->
