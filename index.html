@@ -19,11 +19,6 @@
 <p>b: <span id="ori-b"></span></p>
 <p>g: <span id="ori-g"></span></p>
 
-<h2>加速度(重力加速度のぞく)[m/s^2]</h2>
-<p>x: <span id="acc-x"></span></p>
-<p>y: <span id="acc-y"></span></p>
-<p>z: <span id="acc-z"></span></p>
-
 <h2>加速度(重力加速度ふくむ)[m/s^2]</h2>
 <p>x: <span id="accG-x"></span></p>
 <p>y: <span id="accG-y"></span></p>
@@ -44,15 +39,12 @@ window.addEventListener("devicemotion", function(e){
   var acc = e.acceleration;
   var accG = e.accelerationIncludingGravity;
   var rot = e.rotationRate;
-  document.getElementById("acc-x").innerHTML = acc.x.toFixed(3);
-  document.getElementById("acc-y").innerHTML = acc.y.toFixed(3);
-  document.getElementById("acc-z").innerHTML = acc.z.toFixed(3);
   document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
   
-                 if ( accG-x > 9 || accG-y > 9 || accG-x < -9 || accG-y < -9) {
-                alert("鍵が掛かっています。");
+  if ( accG-x > 9 || accG-y > 9 || accG-x < -9 || accG-y < -9) {
+      alert("鍵が掛かっています。");
                 //e.stopPropagation(); //一回のみ
             }   
 });
