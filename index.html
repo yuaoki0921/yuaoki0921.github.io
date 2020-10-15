@@ -14,10 +14,10 @@
 <body>
   
 
-<h2>向き[deg]</h2>
+<!-- <h2>向き[deg]</h2>
 <p>a: <span id="ori-a"></span></p>
 <p>b: <span id="ori-b"></span></p>
-<p>g: <span id="ori-g"></span></p>
+<p>g: <span id="ori-g"></span></p> -->
 
 <h2>加速度[m/s^2]</h2>
 <p>x: <span id="accG-x"></span></p>
@@ -29,11 +29,11 @@
 
     
 <script>
-window.addEventListener("deviceorientation", function(e){
-　document.getElementById("ori-a").innerHTML = e.alpha.toFixed(3);
-　document.getElementById("ori-b").innerHTML = e.beta.toFixed(3);
-　document.getElementById("ori-g").innerHTML = e.gamma.toFixed(3);
-});
+// window.addEventListener("deviceorientation", function(e){
+// 　document.getElementById("ori-a").innerHTML = e.alpha.toFixed(3);
+// 　document.getElementById("ori-b").innerHTML = e.beta.toFixed(3);
+// 　document.getElementById("ori-g").innerHTML = e.gamma.toFixed(3);
+// });
 
 window.addEventListener("devicemotion", function(e){
   var acc = e.acceleration;
@@ -59,6 +59,11 @@ window.addEventListener("devicemotion", function(e){
             var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
             displayData(lat, lng, accu);                    // displayData 関数を実行
 //             alert("移動しました。");
+            if (confirm("鍵は掛けましたか？")) {
+	// 「はい」選択時の処理
+　　　　　　　　} else {
+	// 「いいえ」選択時の処理
+　　　　　　}
         }, (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
             enableHighAccuracy: true                        // 高精度で測定するオプション
