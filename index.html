@@ -43,7 +43,7 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
   
-  if ( accG-x > 9 || accG-y > 9 || accG-x < -9 || accG-y < -9) {
+  if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
       alert("鍵が掛かっています。");
                 //e.stopPropagation(); //一回のみ
             }   
