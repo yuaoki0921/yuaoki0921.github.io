@@ -4,17 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    
 
     <script type="text/javascript" src="watch-position.js"></script><!-- jsファイル読み込み-->
     <title>加速度の値を得る</title>
 </head>
 
 <body>
-  
-
-
 
 <h2>加速度[m/s^2]</h2>
 <p>x: <span id="accG-x"></span></p>
@@ -29,9 +24,9 @@
 
 
 window.addEventListener("devicemotion", function(e){
-  var acc = e.acceleration;
+//   var acc = e.acceleration;
   var accG = e.accelerationIncludingGravity;
-  var rot = e.rotationRate;
+//   var rot = e.rotationRate;
   document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
@@ -53,7 +48,7 @@ window.addEventListener("devicemotion", function(e){
             displayData(lat, lng, accu);                    // displayData 関数を実行
 //             alert("移動しました。");
             if (confirm("鍵は掛けましたか？")) {
-		    confirm.stopPropagation(); //一回のみ
+//  		    confirm.stopPropagation(); //一回のみ
 	// 「はい」選択時の処理
 　　　　　　　　} else {
 	// 「いいえ」選択時の処理
