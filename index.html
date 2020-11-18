@@ -30,12 +30,11 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
-	
- window.onload = function() {
+
+for(i = 0; i <= 1; i++){
   if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
 	  alert("鍵が掛かっています。");
-            }   
-//   doSomething(); // DOM 構築後に実行したい関数の呼び出し
+  }  
 }; 
 });
    //window.onload = load;
