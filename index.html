@@ -34,6 +34,7 @@ window.addEventListener("devicemotion", function(e){
 for(i = 0; i < 1; i++){
   if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
 	  alert("鍵が掛かっています。");
+	  i=i+1;
   }  
 } 
 });
