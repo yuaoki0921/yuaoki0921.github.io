@@ -30,13 +30,15 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-x").innerHTML = accG.x.toFixed(3);
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
-  
+	
+ window.onload = function() {
   if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
-     function load() {
-        alert("鍵が掛かっています。");
-            }  } 
+	  alert("鍵が掛かっています。");
+            }   
+  doSomething(); // DOM 構築後に実行したい関数の呼び出し
+}; 
 });
-   window.onload = load;
+   //window.onload = load;
 </script>
     
  <script>
@@ -48,9 +50,12 @@ window.addEventListener("devicemotion", function(e){
             displayData(lat, lng, accu);                    // displayData 関数を実行
 //             alert("移動しました。");
             
-	 function load() {
-	   confirm("鍵は掛けましたか？")
-        }, (error) => {                                     // エラー処理（今回は特に何もしない）
+	window.onload = function() {
+	  alert("鍵は掛けましたか？");
+            }   
+           doSomething(); // DOM 構築後に実行したい関数の呼び出し
+         }; 
+         , (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
             enableHighAccuracy: true                        // 高精度で測定するオプション
 	}});
