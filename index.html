@@ -35,7 +35,7 @@ window.addEventListener("devicemotion", function(e){
   if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
 	  alert("鍵が掛かっています。");
             }   
-  doSomething(); // DOM 構築後に実行したい関数の呼び出し
+//   doSomething(); // DOM 構築後に実行したい関数の呼び出し
 }; 
 });
    //window.onload = load;
@@ -53,7 +53,7 @@ window.addEventListener("devicemotion", function(e){
 	window.onload = function() {
 	  alert("鍵は掛けましたか？");
             }   
-           doSomething(); // DOM 構築後に実行したい関数の呼び出し
+//            doSomething(); // DOM 構築後に実行したい関数の呼び出し
          }; 
          , (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
