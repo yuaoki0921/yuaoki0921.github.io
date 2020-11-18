@@ -46,9 +46,10 @@ for(i = 0; i < 1; i++){
             var lat  = position.coords.latitude;            // 緯度を取得
             var lng  = position.coords.longitude;           // 経度を取得
             var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
-            displayData(lat, lng, accu);                    // displayData 関数を実行
+//             displayData(lat, lng, accu);                    // displayData 関数を実行
 // 		alert("移動しました。");
       for(i = 0; i < 1; i++){     
+        displayData(lat, lng, accu);
         confirm("鍵は掛けましたか？")
 	 i=i+1;     
       }
