@@ -32,12 +32,11 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
   
   if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
-     for(var i = 0; i <= 1; i++ ){
+     function load() {
         alert("鍵が掛かっています。");
-        i = i+1
             }  } 
 });
-   
+   window.onload = load;
 </script>
     
  <script>
@@ -48,17 +47,15 @@ window.addEventListener("devicemotion", function(e){
             var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
             displayData(lat, lng, accu);                    // displayData 関数を実行
 //             alert("移動しました。");
-            if (confirm("鍵は掛けましたか？")) {
-//  		    confirm.stopPropagation(); //一回のみ
-	// 「はい」選択時の処理
-　　　　　　　　} else {
-	// 「いいえ」選択時の処理
-　　　　　　}
+            
+	 function load() {
+	   confirm("鍵は掛けましたか？")
         }, (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
             enableHighAccuracy: true                        // 高精度で測定するオプション
-        });
-        
+	}});
+        window.onload = load;
+	 
         // データを表示する displayData 関数
         function displayData(lat, lng, accu) {
             var txt = document.getElementById("txt1");       // データを表示するdiv要素の取得
