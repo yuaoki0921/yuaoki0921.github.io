@@ -39,9 +39,8 @@ for(i = 0; i < 1; i++){
 } 
 });
    //window.onload = load;
-</script>
-    
- <script>
+
+	
        // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
         navigator.geolocation.watchPosition( (position) => {
             var lat  = position.coords.latitude;            // 緯度を取得
@@ -50,7 +49,7 @@ for(i = 0; i < 1; i++){
             displayData(lat, lng, accu);                    // displayData 関数を実行
 // 		alert("移動しました。");
             
-   if (confirm("鍵は掛けましたか？")) {
+        if (confirm("鍵は掛けましたか？")) {
 //  		    confirm.stopPropagation(); //一回のみ
 	// 「はい」選択時の処理
 　　　　　　　　} else {
@@ -67,7 +66,7 @@ for(i = 0; i < 1; i++){
             txt.innerHTML = "緯度: " + lat  +"<br>"+"経度: "+ lng + "<br>"  // データ表示
                         + "精度: "       + accu;
         }
-    </script>
+</script>
 
 
 
