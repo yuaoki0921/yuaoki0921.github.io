@@ -43,16 +43,15 @@ for(i = 0; i < 1; i++){
 	
        // GPS センサの値が変化したら何らか実行する geolocation.watchPosition メソッド
         navigator.geolocation.watchPosition( (position) => {
-	 for(i = 0; i < 1; i++){ 
             var lat  = position.coords.latitude;            // 緯度を取得
             var lng  = position.coords.longitude;           // 経度を取得
             var accu = position.coords.accuracy;            // 緯度・経度の精度を取得
             displayData(lat, lng, accu);                    // displayData 関数を実行
 // 		alert("移動しました。");
-        
+         for(i = 0; i < 1; i++){ 
              confirm("鍵は掛けましたか？")
 	       i=i+1;     
-      }
+    
         }, (error) => {                                     // エラー処理（今回は特に何もしない）
         }, {
             enableHighAccuracy: true                        // 高精度で測定するオプション
