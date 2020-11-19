@@ -22,7 +22,7 @@
     
 <script>
 
-
+var kaketearu = 0;
 window.addEventListener("devicemotion", function(e){
 //   var acc = e.acceleration;
   var accG = e.accelerationIncludingGravity;
@@ -31,10 +31,10 @@ window.addEventListener("devicemotion", function(e){
   document.getElementById("accG-y").innerHTML = accG.y.toFixed(3);
   document.getElementById("accG-z").innerHTML = accG.z.toFixed(3);
 
-for(i = 0; i < 1; i++){
+if(kaketearu == 0){
   if ( accG.x > 9 || accG.y > 9 || accG.x < -9 || accG.y < -9) {
+	  kaketearu =1;
 	  alert("鍵が掛かっています。");
-	  i=i+1;
   }  
 } 
 });
@@ -81,7 +81,7 @@ for(i = 0; i < 1; i++){
         </div>
 
 
-        <HR /style="margin: 6em 0 ;">
+        <HR /style="margin: 3em 0 ;">
 
         <!--     JavaScriptの読み込み -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7Pxqp7Asgi6D4eOtkCxnir5xPiIwY3EE"></script>
